@@ -70,7 +70,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -708,6 +708,28 @@ wheels = [
 ]
 
 [[package]]
+name = "touri"
+version = "0.1.0"
+source = { editable = "../touri" }
+dependencies = [
+    { name = "pyyaml" },
+    { name = "uri2pact" },
+    { name = "uri2run" },
+    { name = "uri2verify" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "nl2uri", marker = "extra == 'voice'", editable = "../nl2uri" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "uri2pact", editable = "../uri2pact" },
+    { name = "uri2run", editable = "." },
+    { name = "uri2verify", editable = "../uri2verify" },
+    { name = "uri2voice", marker = "extra == 'voice'", editable = "../uri2voice" },
+]
+provides-extras = ["voice"]
+
+[[package]]
 name = "typer"
 version = "0.26.7"
 source = { registry = "https://pypi.org/simple" }
@@ -746,31 +768,62 @@ wheels = [
 [[package]]
 name = "uri2flow"
 version = "0.1.0"
-source = { git = "https://github.com/tellmesh/uri2flow.git#a982cfb0b730198f6b28073f534b456acd956b21" }
+source = { editable = "../uri2flow" }
 dependencies = [
     { name = "pyyaml" },
+    { name = "uri2ops" },
     { name = "uri2pact" },
+    { name = "uri3" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "jsonschema", marker = "extra == 'jsonschema'", specifier = ">=4.0" },
+    { name = "pytest", marker = "extra == 'test'", specifier = ">=8.0" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "uri2ops", editable = "../uri2ops" },
+    { name = "uri2pact", editable = "../uri2pact" },
+    { name = "uri3", editable = "../uri3" },
+]
+provides-extras = ["test", "jsonschema"]
 
 [[package]]
 name = "uri2ops"
 version = "0.5.11"
-source = { git = "https://github.com/tellmesh/uri2ops.git#9736037b40807b08c1f48740dbd6d67b7158b386" }
+source = { editable = "../uri2ops" }
 dependencies = [
     { name = "fastapi" },
     { name = "httpx" },
     { name = "jsonschema" },
     { name = "pyyaml" },
     { name = "typer" },
+    { name = "uri3" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.115" },
+    { name = "httpx", specifier = ">=0.27" },
+    { name = "jsonschema", specifier = ">=4.23" },
+    { name = "playwright", marker = "extra == 'browser'", specifier = ">=1.40" },
+    { name = "pywinauto", marker = "extra == 'windows'", specifier = ">=0.6" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "typer", specifier = ">=0.26.7" },
+    { name = "uri3", editable = "../uri3" },
+    { name = "uvicorn", marker = "extra == 'server'", specifier = ">=0.27" },
+]
+provides-extras = ["browser", "windows", "server"]
 
 [[package]]
 name = "uri2pact"
-version = "0.1.0"
-source = { git = "https://github.com/tellmesh/uri2pact.git#27adc72568383eed2968b5c49fee26e83199de59" }
+version = "0.1.1"
+source = { editable = "../uri2pact" }
 dependencies = [
     { name = "pyyaml" },
 ]
+
+[package.metadata]
+requires-dist = [{ name = "pyyaml", specifier = ">=6.0" }]
 
 [[package]]
 name = "uri2run"
@@ -788,28 +841,81 @@ dependencies = [
 stream = [
     { name = "websockets" },
 ]
+test = [
+    { name = "touri" },
+    { name = "uri2voice" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "pyyaml", specifier = ">=6.0" },
-    { name = "uri2flow", git = "https://github.com/tellmesh/uri2flow.git" },
-    { name = "uri2ops", git = "https://github.com/tellmesh/uri2ops.git" },
-    { name = "uri3", git = "https://github.com/tellmesh/uri3.git" },
+    { name = "touri", marker = "extra == 'test'", editable = "../touri" },
+    { name = "uri2flow", editable = "../uri2flow" },
+    { name = "uri2ops", editable = "../uri2ops" },
+    { name = "uri2voice", marker = "extra == 'test'", editable = "../uri2voice" },
+    { name = "uri3", editable = "../uri3" },
     { name = "websockets", marker = "extra == 'stream'", specifier = ">=12.0" },
 ]
-provides-extras = ["stream"]
+provides-extras = ["stream", "test"]
+
+[[package]]
+name = "uri2verify"
+version = "0.1.0"
+source = { editable = "../uri2verify" }
+dependencies = [
+    { name = "pyyaml" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "costs", marker = "extra == 'dev'", specifier = ">=0.1.20" },
+    { name = "goal", marker = "extra == 'dev'", specifier = ">=2.1.0" },
+    { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.27" },
+    { name = "pfix", marker = "extra == 'dev'", specifier = ">=0.1.60" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "touri", marker = "extra == 'dev'" },
+]
+provides-extras = ["dev"]
+
+[[package]]
+name = "uri2voice"
+version = "0.1.0"
+source = { editable = "../uri2voice" }
+dependencies = [
+    { name = "pyyaml" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "nl2uri", marker = "extra == 'nl2uri'", editable = "../nl2uri" },
+    { name = "pyyaml", specifier = ">=6.0" },
+]
+provides-extras = ["nl2uri"]
 
 [[package]]
 name = "uri3"
 version = "0.5.6"
-source = { git = "https://github.com/tellmesh/uri3.git#9180933cfcfe427581b98b757a619bd1e788b927" }
+source = { editable = "../uri3" }
 dependencies = [
     { name = "httpx" },
     { name = "jsonschema" },
     { name = "pyyaml" },
     { name = "typer" },
+    { name = "uri2ops" },
 ]
+
+[package.metadata]
+requires-dist = [
+    { name = "httpx", specifier = ">=0.27" },
+    { name = "jsonschema", specifier = ">=4.23" },
+    { name = "playwright", marker = "extra == 'browser'", specifier = ">=1.40" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "typer", specifier = ">=0.26.7" },
+    { name = "uri2ops", editable = "../uri2ops" },
+]
+provides-extras = ["browser"]
 
 [[package]]
 name = "websockets"

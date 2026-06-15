@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import httpx
 from uri2run import run_backend, run_target
 
 
-def test_docker_transport_dry_run():
+def test_docker_transport_dry_run(repo_root: Path):
     result = run_backend(
         {"type": "docker", "target": "docker://stack/ssh-testenv?action=up&dry_run=1"},
         {},
-        {"root": "."},
+        {"root": str(repo_root)},
     )
     payload = result.to_dict()
     assert payload["ok"] is True
@@ -22,8 +23,12 @@ def test_docker_transport_dry_run():
     assert payload["data"]["action"] == "up"
 
 
-def test_run_target_docker_scheme():
-    result = run_target("docker://stack/ssh-testenv?action=status&dry_run=1", {}, {"root": "."})
+def test_run_target_docker_scheme(repo_root: Path):
+    result = run_target(
+        "docker://stack/ssh-testenv?action=status&dry_run=1",
+        {},
+        {"root": str(repo_root)},
+    )
     assert result.ok is True
     assert result.meta.get("transport") == "docker"
 

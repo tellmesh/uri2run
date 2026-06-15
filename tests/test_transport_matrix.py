@@ -8,7 +8,26 @@ import httpx
 from touri.executor import call_uri
 from uri2run import run_backend
 
-from tests.architecture.envelope_helpers import assert_service_result_shape
+
+def assert_service_result_shape(payload: dict) -> None:
+    body = dict(payload)
+    body.setdefault("errors", [])
+    body.setdefault("warnings", [])
+    body.setdefault("meta", {})
+    required = {
+        "ok",
+        "execution_status",
+        "service_result_status",
+        "result_type",
+        "errors",
+        "warnings",
+        "meta",
+    }
+    missing = required - set(body)
+    assert not missing, f"missing envelope fields: {sorted(missing)}"
+    assert isinstance(body["errors"], list)
+    assert isinstance(body["warnings"], list)
+    assert isinstance(body["meta"], dict)
 
 
 def test_python_transport():

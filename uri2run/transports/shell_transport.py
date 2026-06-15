@@ -41,6 +41,11 @@ def _env(payload: dict[str, Any], context: dict[str, Any]) -> dict[str, str] | N
     return env
 
 
+def _cwd(payload: dict[str, Any], context: dict[str, Any]) -> str | None:
+    value = payload.get("cwd", context.get("cwd", context.get("root")))
+    return str(value) if value else None
+
+
 def run_shell(command: str, payload: dict[str, Any], context: dict[str, Any]) -> ServiceResult:
     timeout = payload.get("timeout", context.get("timeout"))
     shell = bool(payload.get("shell", "argv" not in payload))
@@ -55,7 +60,7 @@ def run_shell(command: str, payload: dict[str, Any], context: dict[str, Any]) ->
             capture_output=True,
             check=False,
             timeout=float(timeout) if timeout is not None else None,
-            cwd=payload.get("cwd", context.get("cwd")),
+            cwd=_cwd(payload, context),
             env=_env(payload, context),
             input=payload.get("input"),
         )
