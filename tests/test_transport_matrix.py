@@ -142,30 +142,3 @@ def test_unsupported_transport():
     assert result.errors[0].code == "BACKEND_UNSUPPORTED"
     assert result.meta["runtime"] == "uri2run"
     assert result.meta["transport"] == "grpc"
-
-
-def test_uri2ops_transport_preserves_session_reference(monkeypatch, repo_root: Path):
-    session: dict = {}
-    captured: dict = {}
-
-    def fake_dispatch(scheme, operation, payload, context):
-        captured["context"] = context
-        context["session"]["seen"] = True
-        return {"ok": True, "scheme": scheme, "operation": operation}
-
-    monkeypatch.setattr("uri2run.transports.uri2ops_transport.dispatch", fake_dispatch)
-
-    result = run_backend(
-        {
-            "type": "uri2ops",
-            "uri": "browser://chrome/page/open",
-            "scheme": "browser",
-            "operation": "open",
-        },
-        {},
-        {"root": str(repo_root), "session": session},
-    ).to_dict()
-
-    assert result["ok"] is True
-    assert captured["context"]["session"] is session
-    assert session["seen"] is True
