@@ -56,4 +56,23 @@ result = run_backend(
 Every result includes `meta.transport`, `meta.duration_ms`, and `meta.runtime = uri2run`.
 Backends with an explicit target also include `meta.target`.
 
+## Install
+
+```bash
+pip install -e .
+# optional streaming extras:
+pip install -e ".[stream]"
+```
+
 See [`docs/URI2RUN_ARCHITECTURE.md`](../../docs/URI2RUN_ARCHITECTURE.md).
+
+## Links
+
+- [TODO](TODO.md)
+- [touri](../touri)
+- Org status: [`../TODO_STATUS.md`](../TODO_STATUS.md)
+
+
+## License
+
+Licensed under Apache-2.0.
