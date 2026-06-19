@@ -22,3 +22,11 @@
 {"at": "2026-06-15T21:12:04+00:00", "type": "StepStarted", "workflow_id": "check-agent-health", "step_id": "verify_ok", "uri": "assertion://contains", "operation": "check", "kind": "assertion", "payload": {"actual_from": "extract_body.text", "expected": "ok"}}
 {"at": "2026-06-15T21:12:04+00:00", "type": "StepCompleted", "workflow_id": "check-agent-health", "step_id": "verify_ok", "ok": true}
 {"at": "2026-06-15T21:12:04+00:00", "type": "WorkflowCompleted", "workflow_id": "check-agent-health", "ok": true, "mode": "dry_run", "workflow_status": "completed", "execution_status": "completed", "service_result_status": "succeeded"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowStarted", "workflow_id": "check-agent-health", "run_id": "dd7c5ba2bc94", "mode": "dry_run"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "check-agent-health", "step_id": "open_health", "uri": "browser://chrome/page/open", "operation": "open", "kind": "command", "payload": {"url": "http://localhost:8101/health"}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "check-agent-health", "step_id": "open_health", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "check-agent-health", "step_id": "extract_body", "uri": "dom://chrome/active/body", "operation": "read", "kind": "query", "payload": {}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "check-agent-health", "step_id": "extract_body", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "check-agent-health", "step_id": "verify_ok", "uri": "assertion://contains", "operation": "check", "kind": "assertion", "payload": {"actual_from": "extract_body.text", "expected": "ok"}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "check-agent-health", "step_id": "verify_ok", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowCompleted", "workflow_id": "check-agent-health", "ok": true, "mode": "dry_run", "workflow_status": "completed", "execution_status": "completed", "service_result_status": "succeeded"}

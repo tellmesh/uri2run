@@ -30,3 +30,19 @@
 {"at": "2026-06-15T21:12:04+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "uri": "browser://chrome/page/open", "operation": "open", "kind": "command", "payload": {"url": "http://localhost:8101/health"}}
 {"at": "2026-06-15T21:12:04+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "ok": true}
 {"at": "2026-06-15T21:12:04+00:00", "type": "WorkflowCompleted", "workflow_id": "weather-agent-local-health", "ok": true, "mode": "dry_run", "workflow_status": "completed", "execution_status": "completed", "service_result_status": "succeeded"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowStarted", "workflow_id": "weather-agent-local-health", "run_id": "daa027c71bdc", "mode": "dry_run"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "agent-weather-generator", "uri": "agent://weather-generator", "operation": "generate", "kind": "command", "payload": {}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "agent-weather-generator", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "hypervisor-local-weather-agent-run", "uri": "hypervisor://local/weather-agent/run", "operation": "run", "kind": "command", "payload": {}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "hypervisor-local-weather-agent-run", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "uri": "browser://chrome/page/open", "operation": "open", "kind": "command", "payload": {"url": "http://localhost:8101/health"}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowCompleted", "workflow_id": "weather-agent-local-health", "ok": true, "mode": "dry_run", "workflow_status": "completed", "execution_status": "completed", "service_result_status": "succeeded"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowStarted", "workflow_id": "weather-agent-local-health", "run_id": "b9403cb0ad2c", "mode": "dry_run"}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "agent-weather-generator", "uri": "agent://weather-generator", "operation": "generate", "kind": "command", "payload": {}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "agent-weather-generator", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "hypervisor-local-weather-agent-run", "uri": "hypervisor://local/weather-agent/run", "operation": "run", "kind": "command", "payload": {}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "hypervisor-local-weather-agent-run", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepStarted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "uri": "browser://chrome/page/open", "operation": "open", "kind": "command", "payload": {"url": "http://localhost:8101/health"}}
+{"at": "2026-06-18T13:17:49+00:00", "type": "StepCompleted", "workflow_id": "weather-agent-local-health", "step_id": "browser-chrome-page-open", "ok": true}
+{"at": "2026-06-18T13:17:49+00:00", "type": "WorkflowCompleted", "workflow_id": "weather-agent-local-health", "ok": true, "mode": "dry_run", "workflow_status": "completed", "execution_status": "completed", "service_result_status": "succeeded"}
